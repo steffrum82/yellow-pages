@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+export PATH=".:$PATH"
+for old in ./zonefiles/*.old; do
+	new="./zonefiles/`basename $old .old`"
+	diff <(list-domains "$new"|sort -u) <(list-domains "$old"|sort -u)
+done
+

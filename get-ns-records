@@ -1,0 +1,5 @@
+#!/usr/bin/awk -f
+$4=="NS" && !record[tolower($1 "@" $5)]++ {
+	printf("%s\t%s\n", tolower($1), tolower($5))
+}
+

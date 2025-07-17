@@ -1,0 +1,5 @@
+#!/usr/bin/awk -f
+!domain[tolower($1)]++ {
+	print tolower($1);
+}
+
