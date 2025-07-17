@@ -47,6 +47,7 @@ _start_walk () {
 	local root_server="$2"
 	# get top level domain nameserver
 	$dig NS $tld @$root_server $dig_args | get-ns-records | while read DOMAIN NAMESERVER; do
+		sleep $(( (RANDOM % 3) + 1 ))
 		_zone_transfer $DOMAIN $NAMESERVER
 	done
 }
