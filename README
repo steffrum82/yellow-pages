@@ -1,4 +1,5 @@
 DNS Zone Walking aka. Yellow Pages - Zone Transfers for Roots and TLDs
+Topics: dns dns-zone-files zonewalk
 
 This is a PROOF OF CONCEPT using bash, awk, sed and dig(1) only.
 
