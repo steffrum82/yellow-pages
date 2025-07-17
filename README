@@ -1,0 +1,20 @@
+DNS Zone Walking aka. Yellow Pages - Zone Transfers for Roots and TLDs
+
+This is a PROOF OF CONCEPT using bash, awk, sed and dig(1) only.
+
+* https://en.wikipedia.org/wiki/DNS_root_zone
+* https://en.wikipedia.org/wiki/Root_name_server
+* https://en.wikipedia.org/wiki/DNS_zone_transfer
+
+# this creates the ./tlds.txt file and the ./zonefiles directory
+time proxychains ./start-zonewalk
+or
+time proxychains ./zone-transfer <tld> [root server]
+
+cat ./zonefiles/*<tld>*.txt* | ./list-domains # | get-html-title >titles.<tld>.txt
+
+See also the Original
+
+* https://github.com/flotwig/TLDR-2
+* https://github.com/flotwig/zone-walks
+

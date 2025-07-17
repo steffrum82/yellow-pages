@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# get TLDs from the DNS root server
+set -e
+export PATH=".:$PATH"
+touch tlds.txt || exit
+zone-transfer && get-ns-records ./zonefiles/.@*.txt | \
+	awk '!tld[tolower($1)]++ { print tolower($1) }' >tlds.txt
+
