@@ -1,0 +1,13 @@
+#!/usr/bin/env -S chronic flock -n ${HOME}/yellow-pages/cronjob bash
+
+set -x
+set -e
+
+cd ~/yellow-pages || exit
+
+./mk-tlds
+./start-zonewalk.sh
+./diff-zonefiles | ifne mail -E -s "New domains (yellow pages)" ${USER:-$LOGNAME}
+
+exit 0
+
