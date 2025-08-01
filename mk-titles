@@ -2,11 +2,12 @@
 #set -e
 export PATH=".:$PATH"
 mkdir -p titles || exit
+./mk-lists
 rm-dot <tlds.txt | while read TLD; do
 	tmp="`mktemp --tmpdir=/dev/shm`"
-	file="titles/$TLD.txt"
-	list-domains ./zonefiles/*$TLD*.txt \
-		| get-html-title >"$tmp"
+	input_file="lists/$TLD.txt"
+	output_file="titles/$TLD.txt"
+	get-html-title <"$input_file" >"$tmp"
 	if [ -s "$tmp" ]; then
 		mv -f -- "$tmp" "$file"
 	else
